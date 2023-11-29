@@ -71,7 +71,7 @@ local function startAutoParry()
         local ball = focusedBall
         local distanceToPlayer = (ball.Position - charPos).Magnitude
 
-        if distanceToPlayer < 10 then
+        if distanceToPlayer < 3.8 then
             parryButtonPress:Fire()
             return
         end
@@ -89,6 +89,7 @@ local function startAutoParry()
 end
 
 local function stopAutoParry()
+	print("Stopped parry!")
     if heartbeatConnection then
         heartbeatConnection:Disconnect()
         heartbeatConnection = nil
