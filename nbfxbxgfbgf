@@ -49,11 +49,10 @@ local function startAutoParry()
     end
 	--Added auto parry delay config
     local BASE_THRESHOLD = 0.15 
-    local VELOCITY_SCALING_FACTOR = 0.002 
-	local DELAY_TIME = 0.25 -- Adjust this value for the desired delay time, trial and error find what best suits you depending on your ping
+    local VELOCITY_SCALING_FACTOR = 0.002
 
     local function getDynamicThreshold(ballVelocityMagnitude)
-        local adjustedThreshold = BASE_THRESHOLD - (ballVelocityMagnitude * VELOCITY_SCALING_FACTOR - DELAY_TIME)
+        local adjustedThreshold = BASE_THRESHOLD - (ballVelocityMagnitude * VELOCITY_SCALING_FACTOR)
         return math.max(0.12, adjustedThreshold)
     end
 
@@ -71,7 +70,7 @@ local function startAutoParry()
         local ball = focusedBall
         local distanceToPlayer = (ball.Position - charPos).Magnitude
 
-        if distanceToPlayer < 3.8 then
+        if distanceToPlayer < 0.85 then
             parryButtonPress:Fire()
             return
         end
