@@ -53,7 +53,7 @@ local function startAutoParry()
 
     local function getDynamicThreshold(ballVelocityMagnitude)
         local adjustedThreshold = BASE_THRESHOLD - (ballVelocityMagnitude * VELOCITY_SCALING_FACTOR)
-        return math.max(0.12, adjustedThreshold)
+        return math.max(0.05, adjustedThreshold)
     end
 
     local function checkBallDistance()
